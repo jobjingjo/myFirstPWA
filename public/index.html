@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+        <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="black">
+        <title>My First JavaScript</title>
+        <link rel="manifest" href="/manifest.json">
+        <link rel="apple-touch-icon" href="/images/icons-192.png">
+    </head>
+<body>
+
+<h1>My First JavaScript</h1>
+
+<button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()">
+Click me to display Date and Time.</button>
+
+<p id="demo"></p>
+<button id="butInstall">butInstall</button>
+<script src="app.js"></script>
+<script src="install.js"></script>
+<script src="service-worker.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+    .then(registration => {
+      console.log('Service Worker is registered', registration);
+    })
+    .catch(err => {
+      console.error('Registration failed:', err);
+    });
+  });
+}
+</script>
+</body>
+</html>
