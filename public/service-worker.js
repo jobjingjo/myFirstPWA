@@ -86,6 +86,38 @@ self.addEventListener("fetch", (event) => {
     );
   }
   
+  const JETSTAR = "https://www.jetstar.com"
+  if (event.request.method === 'GET' && event.request.url.indexOf(JETSTAR) !== -1) {
+    console.log("fetch : "+JETSTAR)
+
+    event.respondWith(
+      caches.open(CACHE_NAME).then(function(cache) {
+        return cache.match(event.request).then(function (response) {
+          return response || fetch(event.request).then(function(response) {
+            cache.put(event.request, response.clone());
+            return response;
+          });
+        });
+      })
+    );
+
+    /*
+    event.respondWith(
+      caches.open(CACHE_NAME).then(cache => {
+        cache.match(event.request.url)
+        .then(cachedResponse => {
+          return cachedResponse
+        })
+        .catch(()=>{
+          return fetch(event.request).then(response => {
+            cache.put(event.request, response.clone());
+            return response;
+          });
+        })
+      })
+    );
+    */
+  }
 
   // If our if() condition is false, then this fetch handler won't intercept the
   // request. If there are any other fetch handlers registered, they will get a

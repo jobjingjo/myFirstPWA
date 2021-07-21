@@ -5,7 +5,7 @@ function updateUI(bookings){
     elBookings.innerHTML ="";
     bookings.forEach(booking => {
         let li = document.createElement("li");
-        li.innerHTML=`<li>${booking.pnr}</li>`;
+        li.innerHTML=`<li><div>${booking.pnr}</div><img src='${booking.image}'></li>`;
         elBookings.appendChild(li)
     });
 }

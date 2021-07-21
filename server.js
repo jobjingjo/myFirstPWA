@@ -14,20 +14,22 @@ function getBooking(req, resp) {
   });
 }
 
-
 function getBookings(req, resp) {
  const bookings = [{
    pnr:'XM8KTN',
-   from:'BKK',
-   to:'NRT'
+   from:'MEL',
+   to:'BKK',
+   image:"https://www.jetstar.com/nz/en//~/_media/Global/Images/Destination/BKK/BKK_MMBW_Past_Trip.jpg"
  },{
   pnr:'JJ5S5D',
   from:'BKK',
-  to:'MEL'
+  to:'NRT',
+  image:"https://www.jetstar.com/nz/en//~/_media/Global/Images/Destination/NRT/NRT_MMBW_MyTrip.jpg"
 },{
   pnr:'AMI6HH',
-  from:'BKK',
-  to:'CDG'
+  from:'MEL',
+  to:'SYD',
+  image:"https://www.jetstar.com/nz/en//~/_media/Global/Images/Destination/SYD/SYD_MMBW_MyTrip.jpg"
 }]
   resp.json(bookings);
 }
