@@ -5,6 +5,33 @@ const express = require('express');
 //const fetch = require('node-fetch');
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 
+function getBooking(req, resp) {
+  const pnr = req.params.pnr || '40.7720232,-73.9732319';
+  resp.json({
+    pnr:pnr,
+    from:"somewhere",
+    to:"someplace"
+  });
+}
+
+
+function getBookings(req, resp) {
+ const bookings = [{
+   pnr:'XM8KTN',
+   from:'BKK',
+   to:'NRT'
+ },{
+  pnr:'JJ5S5D',
+  from:'BKK',
+  to:'MEL'
+},{
+  pnr:'AMI6HH',
+  from:'BKK',
+  to:'CDG'
+}]
+  resp.json(bookings);
+}
+
 /**
  * Starts the Express server.
  *
@@ -28,9 +55,8 @@ const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
     });
     
   
-    //app.get('/forecast/:location', getForecast);
-    //app.get('/forecast/', getForecast);
-    //app.get('/forecast', getForecast);
+    app.get('/bookings/:pnr', getBooking);
+    app.get('/bookings', getBookings);
     app.use(express.static('public'));
   
     const server = app.listen('8000', () => {

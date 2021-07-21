@@ -31,6 +31,11 @@
   <body>
     <h1>You are offline</h1>
 
+    <h1>Your booking</h1>
+    <ul id="bookings">
+      <li>test</li>
+    </ul>
+
     <p>Click the button below to try reloading.</p>
     <button type="button">⤾ Reload</button>
 
@@ -65,6 +70,28 @@
       }
 
       checkNetworkAndReload();
+    </script>
+    <script>
+      function updateUI(bookings){
+          const elBookings = document.getElementById('bookings');
+          elBookings.innerHTML ="";
+          bookings.forEach(booking => {
+              let li = document.createElement("li");
+              li.innerHTML=`<li>${booking.pnr}</li>`;
+              elBookings.appendChild(li)
+          });
+      }
+      const BOOKINGS="/bookings";
+
+      caches
+      .match(BOOKINGS)
+      .then(function (response) {
+        if (!response) throw Error('No data');
+        return response.json();
+      })
+      .then(function (data) {
+          updateUI(data);
+      });
     </script>
   </body>
 </html>

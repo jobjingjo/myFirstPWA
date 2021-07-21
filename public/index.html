@@ -4,22 +4,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
         <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="black">
-        <title>My First JavaScript</title>
+        <title>My First PWA</title>
         <link rel="manifest" href="/manifest.json">
         <link rel="apple-touch-icon" href="/images/icons-192.png">
     </head>
 <body>
 
-<h1>My First JavaScript</h1>
+<h1>My Online Bookings</h1>
+<ul id="bookings">
+  <li>test</li>
+</ul>
 
-<button type="button"
-onclick="document.getElementById('demo').innerHTML = Date()">
-Click me to display Date and Time.</button>
-
-<p id="demo"></p>
-<button id="butInstall">butInstall</button>
+<button id="fetch">fetch</button>
 <script src="app.js"></script>
-<script src="install.js"></script>
+
 <script src="service-worker.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
